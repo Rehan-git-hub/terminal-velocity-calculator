@@ -15,12 +15,7 @@ def get_terminal_velocity(radius,density_of_particle,density_of_fluid,viscosity)
     while True:
         v_mid = (v_high+v_low)/2
         reynolds = (density_of_fluid*2*radius*v_mid)/viscosity
-        if reynolds<1:
-            cd = 24/reynolds
-        elif reynolds>1000:
-            cd = 0.44
-        else:
-            cd = (24/reynolds)*(1+0.15*reynolds**0.687)
+        cd = (24/reynolds)*(1+0.15*reynolds**0.687)
         drag_force = 0.5*cd*density_of_fluid*(math.pi)*(radius**2)*(v_mid**2)
         
         error = abs(drag_force-net_force)/net_force
