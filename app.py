@@ -12,7 +12,7 @@ def get_terminal_velocity(radius,density_of_particle,density_of_fluid,viscosity)
     v_high =velocity1*2
     v_low = 0
     itteration = 0
-    while itteration < 10000:
+    while:
         v_mid = (v_high+v_low)/2
         reynolds = (density_of_fluid*2*radius*v_mid)/viscosity
         if reynolds<1:
@@ -34,7 +34,7 @@ def get_terminal_velocity(radius,density_of_particle,density_of_fluid,viscosity)
             else:
                 region = "Intermediate region"
             return v_mid,drag_force,cd,reynolds,region,itteration,error
-            
+            break
 
         if drag_force>net_force:
             itteration+=1
@@ -42,7 +42,6 @@ def get_terminal_velocity(radius,density_of_particle,density_of_fluid,viscosity)
         elif drag_force<net_force:
             itteration+=1
             v_low=v_mid
-    raise ValueError(f"Did not converge for radius={radius}, dp={density_of_particle}")
 
 
 st.title("Terminal Velocity Calculator")
