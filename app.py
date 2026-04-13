@@ -12,7 +12,7 @@ def get_terminal_velocity(radius,density_of_particle,density_of_fluid,viscosity)
     v_high =velocity1*2
     v_low = 0
     itteration = 0
-    while:
+    while True:
         v_mid = (v_high+v_low)/2
         reynolds = (density_of_fluid*2*radius*v_mid)/viscosity
         if reynolds<1:
